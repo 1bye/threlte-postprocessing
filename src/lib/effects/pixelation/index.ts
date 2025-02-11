@@ -1,0 +1,1 @@
+export { default as PixelationEffect } from "./PixelationEffect.svelte";
