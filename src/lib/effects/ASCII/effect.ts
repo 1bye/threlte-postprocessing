@@ -1,7 +1,6 @@
 import type { IASCIIEffectProps } from "./types";
 import { Effect } from "postprocessing";
-import { CanvasTexture, Color, NearestFilter, RepeatWrapping, Texture, Uniform, Vector3 } from "three";
-import { hexToRgb } from "$lib/three-js/fluid/utils";
+import { CanvasTexture, Color, NearestFilter, RepeatWrapping, Texture, Uniform } from "three";
 
 const fragment = `
 uniform sampler2D uCharacters;

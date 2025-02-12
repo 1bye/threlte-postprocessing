@@ -1,6 +1,6 @@
 <script lang="ts">
     import type { ASCIIEffectProps } from "./types";
-    import { getEffectComposerContext } from "$lib/three-js/postprocessing";
+    import { getEffectComposerContext } from "../../effect-composer/context";
     import { onMount, tick } from "svelte";
     import { ASCIIEffect } from "./effect";
 
