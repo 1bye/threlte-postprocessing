@@ -43,6 +43,9 @@ npm install threlte-postprocessing
 </EffectComposer>
 ```
 
+## Demo
+Link to [demo](https://codesandbox.io/p/github/1bye/threlte-postprocessing/main)
+
 ## Features ✨
 
 - 🎯 Seamless integration with Threlte and Svelte
