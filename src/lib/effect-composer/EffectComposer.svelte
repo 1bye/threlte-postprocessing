@@ -61,7 +61,7 @@
         camera: null,
 
         push(item: Effect | Pass): number {
-            console.log("PUSH ITEM");
+            // console.log("PUSH ITEM");
             return items.push(item);
         },
 
@@ -88,7 +88,7 @@
     }, id);
 
     function setupEffectComposer(camera: Camera) {
-        console.log("SETUP EFFECT COMPOSER");
+        // console.log("SETUP EFFECT COMPOSER");
         effectComposer?.removeAllPasses();
 
         const webGL2Available = isWebGL2Available();
@@ -121,7 +121,7 @@
         setupEffectComposer(_camera ?? $defaultCamera);
 
         const unsub = size.subscribe(value => {
-            console.log("SET SIZE");
+            // console.log("SET SIZE");
             effectComposer?.setSize(value.width, value.height);
         });
 
@@ -146,12 +146,8 @@
     }, { stage: renderStage, autoInvalidate: false });
 
     $effect(() => {
-        // setupEffectComposer(_camera ?? $defaultCamera);
-    });
-
-    $effect(() => {
         const passes: Pass[] = []
-        console.log($state.snapshot(items));
+        // console.log($state.snapshot(items));
         if (effectComposer) {
             for (let i = 0; i < items.length; i++) {
                 const child = items[i]
@@ -189,7 +185,7 @@
     });
 
     $effect(() => {
-        console.log("UPDATE CONTEXT ");
+        // console.log("UPDATE CONTEXT ");
         context.update(value => {
             value.camera = _camera ?? $defaultCamera;
             value.scene = _scene ?? defaultScene;
@@ -204,14 +200,14 @@
 
     $effect(() => {
         return () => {
-            console.log("REMOVE");
+            // console.log("REMOVE");
             effectComposer?.removeAllPasses()
             effectComposer?.dispose()
         }
     })
 
     $effect(() => {
-        console.log("AUTO RENDER");
+        // console.log("AUTO RENDER");
         const last = autoRender.current
         autoRender.set(false)
         return () => {
@@ -220,7 +216,7 @@
     })
 
     $effect(() => {
-        console.log("TONE MAPPING");
+        // console.log("TONE MAPPING");
         const currentTonemapping = renderer.toneMapping
         renderer.toneMapping = NoToneMapping;
 

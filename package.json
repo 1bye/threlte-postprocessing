@@ -1,6 +1,11 @@
 {
 	"name": "threlte-postprocessing",
-	"version": "0.0.8",
+	"version": "0.0.9",
+	"homepage": "https://github.com/1bye/threlte-postprocessing",
+	"author": "Yurii Hulyk",
+	"description": "About\n\uD83D\uDCEC postprocessing for svelte three.js (threlte)",
+	"license": "MIT",
+	"keywords": ["webgl", "threejs", "js", "svelte", "ts", "3d", "postprocessing", "threlte", "svelte-postprocessing"],
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run prepack",
