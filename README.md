@@ -32,14 +32,14 @@ npm install threlte-postprocessing
 ```svelte
 <script lang="ts">
   import { EffectComposer } from 'threlte-postprocessing'
-  import { DepthOfField, Bloom, Noise, Vignette } from 'threlte-postprocessing/effects'
+  import { DepthOfFieldEffect, BloomEffect, NoiseEffect, VignetteEffect } from 'threlte-postprocessing/effects'
 </script>
 
 <EffectComposer>
-  <DepthOfField focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
-  <Bloom luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
-  <Noise opacity={0.02} />
-  <Vignette eskil={false} offset={0.1} darkness={1.1} />
+  <DepthOfFieldEffect focusDistance={0} focalLength={0.02} bokehScale={2} height={480} />
+  <BloomEffect luminanceThreshold={0} luminanceSmoothing={0.9} height={300} />
+  <NoiseEffect opacity={0.02} />
+  <VignetteEffect eskil={false} offset={0.1} darkness={1.1} />
 </EffectComposer>
 ```
 
@@ -61,7 +61,7 @@ Link to [demo](https://codesandbox.io/p/github/1bye/threlte-postprocessing/main)
 Adds a glow effect to bright areas of the scene.
 
 ```svelte
-<Bloom
+<BloomEffect
   intensity={1.0}           // The intensity of the bloom effect (default: 1.0)
   luminanceThreshold={0.9}  // Minimum luminance required for bloom (default: 0.9)
   luminanceSmoothing={0.025}// Smoothing of the luminance threshold (default: 0.025)
@@ -74,7 +74,7 @@ Adds a glow effect to bright areas of the scene.
 Adjusts the brightness and contrast of the scene.
 
 ```svelte
-<BrightnessContrast
+<BrightnessContrastEffect
   brightness={0}           // Brightness adjustment (-1 to 1, default: 0)
   contrast={0}            // Contrast adjustment (-1 to 1, default: 0)
 />
@@ -84,7 +84,7 @@ Adjusts the brightness and contrast of the scene.
 Simulates lens color separation artifacts.
 
 ```svelte
-<ChromaticAberration
+<ChromaticAberrationEffect
   offset={[0.002, 0.002]}  // RGB offset vector (default: [0.002, 0.002])
   radialModulation={false} // Enable radial offset modulation (default: false)
   modulationOffset={0.15}  // Modulation offset (default: 0.15)
@@ -95,14 +95,14 @@ Simulates lens color separation artifacts.
 Reduces the image to a single average color.
 
 ```svelte
-<ColorAverage />
+<ColorAverageEffect />
 ```
 
 ### ColorDepth
 Reduces the color depth of the image.
 
 ```svelte
-<ColorDepth
+<ColorDepthEffect
   bits={16}               // Number of bits per channel (default: 16)
 />
 ```
@@ -111,7 +111,7 @@ Reduces the color depth of the image.
 Applies color adjustments to the final render.
 
 ```svelte
-<ColorGrading
+<ColorGradingEffect
   lut={texture}            // Color lookup texture
   lutSize={32}            // Size of the lookup texture (default: 32)
   intensity={1.0}         // Effect intensity (default: 1.0)
@@ -122,7 +122,7 @@ Applies color adjustments to the final render.
 Renders the scene's depth buffer.
 
 ```svelte
-<Depth
+<DepthEffect
   inverted={false}        // Invert the depth values (default: false)
   near={0}               // Near plane distance (default: 0)
   far={1}               // Far plane distance (default: 1)
@@ -133,7 +133,7 @@ Renders the scene's depth buffer.
 Simulates camera focus effects by blurring objects based on their distance from the focal point.
 
 ```svelte
-<DepthOfField
+<DepthOfFieldEffect
   focusDistance={0.0}      // Distance to the focus point (default: 0.0)
   focalLength={0.02}       // Focal length of the simulated camera (default: 0.02)
   bokehScale={2.0}         // Size of the bokeh effect (default: 2.0)
@@ -145,7 +145,7 @@ Simulates camera focus effects by blurring objects based on their distance from 
 Creates a dot-screen effect similar to halftone printing.
 
 ```svelte
-<DotScreen
+<DotScreenEffect
   angle={1.57}            // Pattern angle in radians (default: 1.57)
   scale={1.0}             // Pattern scale (default: 1.0)
 />
@@ -155,7 +155,7 @@ Creates a dot-screen effect similar to halftone printing.
 Creates digital glitch effects.
 
 ```svelte
-<Glitch
+<GlitchEffect
   delay={[1.5, 3.5]}      // Min/max delay between glitches (default: [1.5, 3.5])
   duration={[0.6, 1.0]}   // Min/max glitch duration (default: [0.6, 1.0])
   strength={[0.3, 1.0]}   // Min/max glitch strength (default: [0.3, 1.0])
@@ -167,7 +167,7 @@ Creates digital glitch effects.
 Creates volumetric lighting effects.
 
 ```svelte
-<GodRays
+<GodRaysEffect
   decay={0.95}            // Light decay factor (default: 0.95)
   density={0.96}          // Ray density (default: 0.96)
   weight={0.4}            // Ray weight (default: 0.4)
@@ -180,7 +180,7 @@ Creates volumetric lighting effects.
 Overlays a grid pattern on the scene.
 
 ```svelte
-<Grid
+<GridEffect
   scale={1.0}             // Grid scale (default: 1.0)
   lineWidth={0.0}         // Grid line width (default: 0.0)
 />
@@ -190,7 +190,7 @@ Overlays a grid pattern on the scene.
 Adjusts the hue and saturation of the scene.
 
 ```svelte
-<HueSaturation
+<HueSaturationEffect
   hue={0}                 // Hue adjustment (-Math.PI to Math.PI, default: 0)
   saturation={0}          // Saturation adjustment (-1 to 1, default: 0)
 />
@@ -200,7 +200,7 @@ Adjusts the hue and saturation of the scene.
 Adds film grain or noise to the scene.
 
 ```svelte
-<Noise
+<NoiseEffect
   opacity={0.02}           // Noise opacity (default: 0.02)
   premultiply={false}      // Whether to premultiply the noise (default: false)
   blendFunction={BlendFunction.SCREEN} // Blend mode for the noise
@@ -211,7 +211,7 @@ Adds film grain or noise to the scene.
 Creates a pixelated effect by reducing the resolution.
 
 ```svelte
-<Pixelation
+<PixelationEffect
   granularity={5}         // Size of pixels (default: 5)
 />
 ```
@@ -220,7 +220,7 @@ Creates a pixelated effect by reducing the resolution.
 Adds scanlines to the scene, similar to old CRT displays.
 
 ```svelte
-<Scanline
+<ScanlineEffect
   density={1.25}          // Line density (default: 1.25)
 />
 ```
@@ -229,7 +229,7 @@ Adds scanlines to the scene, similar to old CRT displays.
 Applies a sepia tone to the scene.
 
 ```svelte
-<Sepia
+<SepiaEffect
   intensity={1.0}         // Effect intensity (default: 1.0)
 />
 ```
@@ -238,7 +238,7 @@ Applies a sepia tone to the scene.
 Provides high-quality antialiasing.
 
 ```svelte
-<SMAA
+<SMAAEffect
   preset={SMAAPreset.HIGH} // Quality preset (LOW, MEDIUM, HIGH, ULTRA)
   edgeDetectionMode={EdgeDetectionMode.COLOR} // Detection mode (COLOR, DEPTH, LUMA)
 />
@@ -248,7 +248,7 @@ Provides high-quality antialiasing.
 Applies tone mapping to the scene.
 
 ```svelte
-<ToneMapping
+<ToneMappingEffect
   mode={ToneMappingMode.REINHARD} // Tone mapping mode (REINHARD, OPTIMIZED, ACES, HEJL)
   exposure={1.0}          // Exposure level (default: 1.0)
   maxLuminance={16.0}     // Maximum luminance (default: 16.0)
@@ -261,7 +261,7 @@ Applies tone mapping to the scene.
 Darkens the edges of the scene.
 
 ```svelte
-<Vignette
+<VignetteEffect
   offset={0.5}             // Offset of the effect (default: 0.5)
   darkness={0.5}           // Intensity of the darkening (default: 0.5)
   eskil={false}            // Use Eskil's vignette technique (default: false)
@@ -272,11 +272,11 @@ Darkens the edges of the scene.
 Fluid like in [react-fluid](https://github.com/whatisjery/react-fluid-distortion/tree/main)
 ```svelte
 <script lang="ts">
-    import { Fluid } from "threlte-postprocessing/custom";
+    import { FluidEffect } from "threlte-postprocessing/custom";
 </script>
 
 <!-- Don't forget to wrap it with <EffectComposer>! -->
-<Fluid />
+<FluidEffect />
 ```
 
 ### And more...

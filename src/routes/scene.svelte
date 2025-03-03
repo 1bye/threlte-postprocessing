@@ -2,7 +2,7 @@
 	import { T } from '@threlte/core';
 	import { interactivity, useTexture } from '@threlte/extras';
 	import { EffectComposer } from '$lib';
-	import { Fluid } from '$lib/effects/custom';
+	import { FluidEffect } from '$lib/effects/custom';
 	import { GridEffect } from '$lib/effects';
 
 	interactivity();
@@ -11,7 +11,7 @@
 </script>
 
 <EffectComposer>
-	<Fluid />
+	<FluidEffect />
 	<GridEffect scale={0.4} />
 <!--	<ASCIIEffect />-->
 </EffectComposer>
