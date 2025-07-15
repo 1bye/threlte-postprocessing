@@ -33,7 +33,7 @@
         depthBuffer,
         enableNormalPass,
         stencilBuffer,
-        multisampling = 8,
+        multisampling = 0,
         frameBufferType = HalfFloatType,
 
         id,
