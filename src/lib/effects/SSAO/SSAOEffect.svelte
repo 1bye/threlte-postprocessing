@@ -25,7 +25,7 @@
         intensity: 1.0,
         color: undefined,
         // @ts-ignore
-        normalDepthBuffer: downSamplingPass ? downSamplingPass.texture : null,
+        normalDepthBuffer: $context.downSamplingPass ? $context.downSamplingPass.texture : null,
         resolutionScale: $context.resolutionScale ?? 1,
         depthAwareUpsampling: true,
         ...props,
